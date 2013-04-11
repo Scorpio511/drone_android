@@ -15,7 +15,7 @@ public class Vol extends Thread {
 	}
 	
 	public void run(){
-		while(true){
+		
 		
 		try {
 			envoiSocket();
@@ -23,7 +23,7 @@ public class Vol extends Thread {
 				catch (UnknownHostException e) {
 					e.printStackTrace();
 				}
-		}
+		
 	}// execution de la methode d'envoi sur la socket en thread
 	
 	public void envoiSocket() throws UnknownHostException {
