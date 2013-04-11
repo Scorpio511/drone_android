@@ -1,24 +1,35 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    tools:context=".MainActivity" >
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/fond"
+    android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/textView1"
+	<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/hello_world" />
+        android:layout_marginTop="75px"
+        android:layout_weight="0.00"
+        android:gravity="center"
+        android:orientation="horizontal" >
+	
+	</LinearLayout>
 
-    <Button
-        android:id="@+id/envoi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/textView1"
-        android:layout_marginTop="81dp"
-        android:text="Button" />
+	<Button
+	    android:id="@+id/pilotageBouton"
+	    android:layout_width="204dp"
+	    android:layout_height="40dp"
+	    android:layout_marginLeft="280px"
+	    android:layout_marginTop="100px"
+	    android:background="@drawable/piloter"/>
+	
+	<Button
+	    android:id="@+id/quitterBouton"
+	    android:layout_width="204dp"
+	    android:layout_height="40dp"
+	    android:layout_marginLeft="280px"
+	    android:layout_marginTop="30px"
+	    android:background="@drawable/quitter"/>
 
-</RelativeLayout>
+</LinearLayout>
