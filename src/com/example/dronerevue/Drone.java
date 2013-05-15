@@ -1,13 +1,13 @@
 package com.example.dronerevue;
 
-public class CoordoneeDrone {
+public class Drone {
 
-	private static boolean Decollage = false;
-	private static boolean Atterissage = false;
+	 public static boolean Decollage = false;
+	 public static boolean Atterissage = false;
 	
 	public static void setDecollage(boolean ihmDecollage){
 		
-		CoordoneeDrone.Decollage = ihmDecollage; //recupére la valeur 
+		Drone.Decollage = ihmDecollage; //recupére la valeur 
 		
 	}
 	
@@ -17,10 +17,11 @@ public class CoordoneeDrone {
 
 	public static void setAtterissage(boolean ihmAtterissage){
 		
-		CoordoneeDrone.Atterissage = ihmAtterissage;
+		Drone.Atterissage = ihmAtterissage;
 	}
 	
 	public static boolean isAtterissage(){
 		return Atterissage;
 	}
+	
 }

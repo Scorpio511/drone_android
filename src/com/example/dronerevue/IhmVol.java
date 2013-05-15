@@ -10,9 +10,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.*;
 
-public class IhmVol extends Activity {
+public class IhmVol extends Activity /*implements OnClickListener*/{
 	
-
+	
 		
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -20,23 +20,23 @@ public class IhmVol extends Activity {
 		
 		Button boutonDemarrer = (Button)findViewById(R.id.decoller);
 		Button boutonTest = (Button)findViewById(R.id.gauche);
-			
+		
+		//boutonDemarrer.setOnClickListener((OnClickListener) this);
+		//boutonTest.setOnClickListener((OnClickListener)this);		
+		
+		
+				
 		
 		boutonDemarrer.setOnClickListener(new OnClickListener(){
-			
 			public void onClick(View v){
-				try {
+
 				Thread leThread;
 				leThread = new Vol();
 				leThread.start();
-				CoordoneeDrone.setDecollage(true);
+				//Drone test = new Drone();
+				Drone.setDecollage(true);
+				Drone.setAtterissage(false);
 				
-					leThread.join();
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				//CoordoneeDrone.setAtterissage(true);
 			}
 					
 			});//bouton démarrer
@@ -45,12 +45,34 @@ public class IhmVol extends Activity {
 		boutonTest.setOnClickListener(new OnClickListener(){
 			
 			public void onClick(View v){
-				CoordoneeDrone.setAtterissage(true);
+				
+				Drone.setDecollage(false);
+				Drone.setAtterissage(true);	
 			}
 			
 		});//bouton Test
 		
-		}//onCreate
+	
+
+		
+	}//onCreate
+/*
+	@Override
+	public void onClick(View v) {
+		if(v.getId()==R.id.decoller){
+			Thread leThread;
+			leThread = new Vol();
+			leThread.start();
+			Drone.setDecollage(true);
+			Drone.setAtterissage(false);
+		}
+		if(v.getId()==R.id.gauche){
+			Drone.setDecollage(false);
+			Drone.setAtterissage(true);
+		}
+	}
+	*/
+	
 			
 	
 }
