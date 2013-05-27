@@ -5,29 +5,101 @@
     android:background="@drawable/fondl"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/myTextView"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+  <LinearLayout
+      android:layout_width="205dp"
+      android:layout_height="wrap_content"
+      android:orientation="vertical" >
 
     <Button
         android:id="@+id/decoller"
         android:layout_width="204dp"
         android:layout_height="40dp"
         android:background="@drawable/decoller" />
-	
-    <ImageView 
-        android:src="@drawable/boutonvol1"
-        android:layout_marginTop="100px"
-        android:layout_marginLeft="140px"
-        android:layout_width="50dp"
-        android:layout_height="50dp"/>
-    <Button 
-        android:id="@+id/gauche"
-        android:layout_marginTop="-70px"
-        android:layout_marginLeft="50px"
-        android:layout_width="70dp"
-        android:layout_height="42dp"
-        android:background="@drawable/gauche"/>
 
+  	<Button
+  	    android:id="@+id/directionHaut"
+  	    android:layout_width="76dp"
+  	    android:layout_height="wrap_content"
+  	    android:layout_marginLeft="80px"
+  	    android:layout_marginTop="50px"
+  	    android:text="Haut" />
+
+    <Button
+        android:id="@+id/directionDroite"
+        android:layout_width="74dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="170px"
+        android:layout_marginTop="10px"
+        android:text="Droite" />
+
+     <Button
+        android:id="@+id/directionGauche"
+        android:layout_marginLeft="10px"
+        android:layout_marginTop="-75px" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gauche" />
+
+     <Button
+         android:id="@+id/directionBas"
+         android:layout_width="75dp"
+         android:layout_height="wrap_content"
+         android:layout_marginLeft="80px"
+         android:layout_marginTop="0px"
+         android:text="Bas" />
+   </LinearLayout>
+   
+   <LinearLayout 
+      
+      android:layout_width="205dp"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="325dp"
+      android:layout_marginTop="-225dp"
+      android:orientation="vertical" > 
+      
+        <Button
+        android:id="@+id/arret"
+        android:layout_width="204dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="0px"
+        android:background="@drawable/arret" />
+        
+        <Button
+         android:id="@+id/directionAvant"
+         android:layout_width="75dp"
+         android:layout_height="wrap_content"
+         android:layout_marginLeft="80px"
+         android:layout_marginTop="50px"
+         android:text="avancer" />
+        
+        <Button
+        android:id="@+id/rotationDroite"
+        android:layout_width="74dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="170px"
+        android:layout_marginTop="10px"
+        android:text="rotation droite" />
+        
+        <Button
+            android:id="@+id/rotationGauche"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30px"
+            android:layout_marginTop="-79px"
+            android:text="rotation gauche" />
+        
+        <Button
+         android:id="@+id/directionArriere"
+         android:layout_width="75dp"
+         android:layout_height="wrap_content"
+         android:layout_marginLeft="80px"
+         android:layout_marginTop="0px"
+         android:text="reculer" />
+   </LinearLayout>
+       
+   
+     
 </LinearLayout>
+
+
+

@@ -1,39 +1,39 @@
 package com.example.dronerevue;
 
-//import java.io.IOException;
-//import java.io.PipedReader;
-//import java.io.PipedWriter;
-
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.widget.*;
 
-public class IhmVol extends Activity /*implements OnClickListener*/{
+public class IhmVol extends Activity{
 	
 	
-		
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ihm_vol);
 		
-		Button boutonDemarrer = (Button)findViewById(R.id.decoller);
-		Button boutonTest = (Button)findViewById(R.id.gauche);
+		Button boutonDecoller = (Button)findViewById(R.id.decoller);
+		Button boutonAtterissage = (Button)findViewById(R.id.arret);
+		Button boutonInclinaisonDroite = (Button)findViewById(R.id.directionDroite);
+		Button boutonInclinaisonGauche = (Button)findViewById(R.id.directionGauche);
+		Button boutonMonter = (Button)findViewById(R.id.directionHaut);
+		Button boutonDescendre = (Button)findViewById(R.id.directionBas);
+		Button boutonRotationDroite = (Button)findViewById(R.id.rotationDroite);
+		Button boutonRotationGauche = (Button)findViewById(R.id.rotationGauche);
+		Button boutonAvancer = (Button)findViewById(R.id.directionAvant);
+		Button boutonReculer = (Button)findViewById(R.id.directionArriere);
 		
-		//boutonDemarrer.setOnClickListener((OnClickListener) this);
-		//boutonTest.setOnClickListener((OnClickListener)this);		
 		
-		
-				
-		
-		boutonDemarrer.setOnClickListener(new OnClickListener(){
+		boutonDecoller.setOnClickListener(new OnClickListener(){
 			public void onClick(View v){
 
 				Thread leThread;
 				leThread = new Vol();
 				leThread.start();
-				//Drone test = new Drone();
+
 				Drone.setDecollage(true);
 				Drone.setAtterissage(false);
 				
@@ -42,7 +42,7 @@ public class IhmVol extends Activity /*implements OnClickListener*/{
 			});//bouton démarrer
 			
 				
-		boutonTest.setOnClickListener(new OnClickListener(){
+		boutonAtterissage.setOnClickListener(new OnClickListener(){
 			
 			public void onClick(View v){
 				
@@ -52,27 +52,131 @@ public class IhmVol extends Activity /*implements OnClickListener*/{
 			
 		});//bouton Test
 		
-	
+		
+		boutonInclinaisonDroite.setOnTouchListener(new OnTouchListener(){
+
+			public boolean onTouch(View v, MotionEvent enfoncement) {
+				if(enfoncement.getAction() == android.view.MotionEvent.ACTION_DOWN)
+				{
+					Drone.setAnglePhi(1);
+				}
+				else if(enfoncement.getAction() == android.view.MotionEvent.ACTION_UP)
+				{
+					Drone.setAnglePhi(0);
+				}
+				return true;
+			}
+		});
+		
+		
+		boutonInclinaisonGauche.setOnTouchListener(new OnTouchListener(){
+
+			public boolean onTouch(View v, MotionEvent enfoncement) {
+				if(enfoncement.getAction() == android.view.MotionEvent.ACTION_DOWN)
+				{
+					Drone.setAnglePhi(-1);
+				}
+				else if(enfoncement.getAction() == android.view.MotionEvent.ACTION_UP)
+				{
+					Drone.setAnglePhi(0);
+				}
+				return true;
+			}
+		});
+		
+		boutonMonter.setOnTouchListener(new OnTouchListener(){
+
+			public boolean onTouch(View v, MotionEvent enfoncement) {
+				if(enfoncement.getAction() == android.view.MotionEvent.ACTION_DOWN)
+				{
+					Drone.setGaz(1);
+				}
+				else if(enfoncement.getAction() == android.view.MotionEvent.ACTION_UP)
+				{
+					Drone.setGaz(0);
+				}
+				return true;
+			}
+		});
+		
+		boutonDescendre.setOnTouchListener(new OnTouchListener(){
+
+			public boolean onTouch(View v, MotionEvent enfoncement) {
+				if(enfoncement.getAction() == android.view.MotionEvent.ACTION_DOWN)
+				{
+					Drone.setGaz(-1);
+				}
+				else if(enfoncement.getAction() == android.view.MotionEvent.ACTION_UP)
+				{
+					Drone.setGaz(0);
+				}
+				return true;
+			}
+		});
+		
+		boutonRotationDroite.setOnTouchListener(new OnTouchListener(){
+
+			public boolean onTouch(View v, MotionEvent enfoncement) {
+				if(enfoncement.getAction() == android.view.MotionEvent.ACTION_DOWN)
+				{
+					Drone.setYaw(1);
+				}
+				else if(enfoncement.getAction() == android.view.MotionEvent.ACTION_UP)
+				{
+					Drone.setYaw(0);
+				}
+				return true;
+			}
+		});
+		
+		boutonRotationGauche.setOnTouchListener(new OnTouchListener(){
+
+			public boolean onTouch(View v, MotionEvent enfoncement) {
+				if(enfoncement.getAction() == android.view.MotionEvent.ACTION_DOWN)
+				{
+					Drone.setYaw(-1);
+				}
+				else if(enfoncement.getAction() == android.view.MotionEvent.ACTION_UP)
+				{
+					Drone.setYaw(0);
+				}
+				return true;
+			}
+		});
+		
+		boutonAvancer.setOnTouchListener(new OnTouchListener(){
+
+			public boolean onTouch(View v, MotionEvent enfoncement) {
+				if(enfoncement.getAction() == android.view.MotionEvent.ACTION_DOWN)
+				{
+					Drone.setAngleTheta(1);
+				}
+				else if(enfoncement.getAction() == android.view.MotionEvent.ACTION_UP)
+				{
+					Drone.setAngleTheta(0);
+				}
+				return true;
+			}
+		});
+		
+		boutonReculer.setOnTouchListener(new OnTouchListener(){
+
+			public boolean onTouch(View v, MotionEvent enfoncement) {
+				if(enfoncement.getAction() == android.view.MotionEvent.ACTION_DOWN)
+				{
+					Drone.setAngleTheta(-1);
+				}
+				else if(enfoncement.getAction() == android.view.MotionEvent.ACTION_UP)
+				{
+					Drone.setAngleTheta(0);
+				}
+				return true;
+			}
+		});
+		
+	}//Methode onCreate (methode android)
 
 		
-	}//onCreate
-/*
-	@Override
-	public void onClick(View v) {
-		if(v.getId()==R.id.decoller){
-			Thread leThread;
-			leThread = new Vol();
-			leThread.start();
-			Drone.setDecollage(true);
-			Drone.setAtterissage(false);
-		}
-		if(v.getId()==R.id.gauche){
-			Drone.setDecollage(false);
-			Drone.setAtterissage(true);
-		}
-	}
-	*/
-	
-			
-	
-}
+}//IhmVol
+
+

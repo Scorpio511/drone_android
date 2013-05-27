@@ -1,63 +1,48 @@
 package com.example.dronerevue;
 
-//import java.io.IOException;
-//import java.io.PipedReader;
 import java.net.*;
-//import java.io.*;
 
 
 public class Vol extends Thread {
-	private boolean encours = true; 	
-	//private int port=5001;
-  	//private InetAddress adresse;
-  	//private DatagramSocket socket;
-	
+	private boolean encours = true;
+	private int boucleDecollage = 0;
+	private int numeroCommande = 4 ;
+	private byte [] ipDrone = {(byte)10,(byte)0,(byte)2,(byte)2};
+	private int port=5001;
+
 	public Vol() {
-		
-		
-		
+	
 	}
 	
 	public void run(){
-<<<<<<< HEAD
-		
-=======
->>>>>>> Revue 2
 		
 		try {
-			//socket = new DatagramSocket();
-			//adresse = InetAddress.getByName("10.0.2.2");
+
 			while(encours){
-				envoiSocket();
-				
-				try {
-					Thread.sleep(200);
+				envoiSocket();  // 1.La méthode envoiSocket est executé
+				                
+				try {             
+					Thread.sleep(400); // 2. Puis une pause de 400ms   
 				} catch (InterruptedException e) {
 					e.printStackTrace();
-				}
-<<<<<<< HEAD
-		
-=======
+				}//Catch du thread
 				
 			}
-			//socket.close();
+
 		} 
 		catch (UnknownHostException e) {
 					e.printStackTrace();
-				} //catch (SocketException e) {
-			//e.printStackTrace();
-		//} 
+				}//Catch de run 
 	
->>>>>>> Revue 2
 	}// execution de la methode d'envoi sur la socket en thread
 	
 	public void envoiSocket() throws UnknownHostException {
-		int port=5001;
-	  	InetAddress adresse = InetAddress.getByName("10.0.2.2");
+
+		InetAddress adresse = InetAddress.getByAddress(ipDrone);
 	  	DatagramSocket socket;
 	  	
 
-	  	String leMessage = getMessage();
+	  	String leMessage = getMessage(); //Recuperation du message correspondant à l'action de l'utilisateur dans l'ihm
 	  	byte[] message= new byte [leMessage.length()];
 	  	message = leMessage.getBytes();
 	  	
@@ -65,9 +50,8 @@ public class Vol extends Thread {
 	  		try{
   	
 	  			socket = new DatagramSocket();    	  				
-	  			DatagramPacket packet = new DatagramPacket(message,leMessage.length(),adresse,port);
+	  			DatagramPacket packet = new DatagramPacket(message,leMessage.length(),adresse,port); // Creation du datgramme 
 	  			socket.send(packet);
-	  			System.out.println("test d'execution");
 	  			socket.close();
 	  		} 
 	  		catch(Exception e)
@@ -78,19 +62,22 @@ public class Vol extends Thread {
 	
 	public String getMessage(){
 	
-		String messageToDrone = "";
-		
-		if((Drone.isDecollage())==true)
+		String messageToDrone = "";		
+	
+		if(((Drone.isDecollage())==true)&&(boucleDecollage < 1))
 		{
 			messageToDrone = "AT*CONFIG=1,\"control:altitude_max\",\"1000\"\rAT*FTRIM\rAT*REF=4,290718208\r<LF>";
+			boucleDecollage++;
 			return messageToDrone;
 		}
 		else if((Drone.isAtterissage())==true)
 		{
-			messageToDrone = "AT*REF=4,290717696\r";
+			numeroCommande++;
+			messageToDrone = "AT*REF="+numeroCommande+",290717696\r";
 			encours = false;
 			return messageToDrone;
 		}
-		return messageToDrone ="erreur";
+		numeroCommande ++;
+		return messageToDrone = "AT*PCMD="+numeroCommande+",1,"+ Drone.getAnglePhi() +","+ Drone.getAngleTheta() +","+Drone.getGaz()+","+Drone.getYaw()+"<LF>";
 	}
 }

@@ -11,23 +11,31 @@ public final class R {
     public static final class attr {
     }
     public static final class drawable {
-        public static final int boutonvol1=0x7f020000;
-        public static final int decoller=0x7f020001;
-        public static final int droite=0x7f020002;
-        public static final int fond=0x7f020003;
-        public static final int fondl=0x7f020004;
-        public static final int gauche=0x7f020005;
-        public static final int ic_launcher=0x7f020006;
-        public static final int piloter=0x7f020007;
-        public static final int quitter=0x7f020008;
+        public static final int arret=0x7f020000;
+        public static final int boutonvol1=0x7f020001;
+        public static final int decoller=0x7f020002;
+        public static final int droite=0x7f020003;
+        public static final int fond=0x7f020004;
+        public static final int fondl=0x7f020005;
+        public static final int gauche=0x7f020006;
+        public static final int ic_launcher=0x7f020007;
+        public static final int piloter=0x7f020008;
+        public static final int quitter=0x7f020009;
     }
     public static final class id {
-        public static final int decoller=0x7f070003;
-        public static final int gauche=0x7f070004;
-        public static final int menu_settings=0x7f070005;
-        public static final int myTextView=0x7f070002;
+        public static final int arret=0x7f070007;
+        public static final int decoller=0x7f070002;
+        public static final int directionArriere=0x7f07000b;
+        public static final int directionAvant=0x7f070008;
+        public static final int directionBas=0x7f070006;
+        public static final int directionDroite=0x7f070004;
+        public static final int directionGauche=0x7f070005;
+        public static final int directionHaut=0x7f070003;
+        public static final int menu_settings=0x7f07000c;
         public static final int pilotageBouton=0x7f070000;
         public static final int quitterBouton=0x7f070001;
+        public static final int rotationDroite=0x7f070009;
+        public static final int rotationGauche=0x7f07000a;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
